@@ -20,3 +20,4 @@ spring:
       # ddl-auto: none
       generate-ddl: true
       show-sql: true
+    show-sql: true

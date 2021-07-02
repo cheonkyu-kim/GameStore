@@ -15,7 +15,8 @@ import com.app.gamestore.core.domain.entity.Game;
 
 public class GameSpec {
     public enum SearchKey {
-        TITLE("title");
+        TITLE("title"),
+        PRICE("price");
 
         private final String value;
 
@@ -52,6 +53,13 @@ public class GameSpec {
                             root.get(key.value), searchKeyword.get(key)
                         )
                         // builder.like(root.get(key.value), "%" + searchKeyword.get(key) + "%")
+                    );
+                    break;
+                case PRICE:
+                    predicate.add(
+                        builder.gt(
+                            root.get(key.value), 0
+                        )
                     );
                     break;
             }

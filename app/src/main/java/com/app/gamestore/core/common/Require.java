@@ -4,15 +4,18 @@ import java.util.function.Supplier;
 
 import com.app.gamestore.core.domain.exceptions.DomainException;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Require {
     public boolean condition;
 
-    Require(boolean conditon) {
-        this.condition = condition;
+    public Require(boolean _conditon) {
+        this.condition = _conditon;
     }
 
-    public static Require require(boolean condition) throws Exception {
-        return new Require(condition);
+    public static Require require(boolean _condition) {
+        return new Require(_condition);
     }
 
     public void ifNot(DomainException exception) {
@@ -20,7 +23,7 @@ public class Require {
     }
 
     public void thenThrow(Supplier<DomainException> exception) {
-        if(!condition) {
+        if(!this.condition) {
             throw exception.get();
         }
     }

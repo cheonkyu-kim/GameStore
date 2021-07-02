@@ -13,6 +13,7 @@ public class GameDto {
         public String author;
         public String description;
         public String companyName;
+        public long publisher_uid;
     }
 
     @Data
